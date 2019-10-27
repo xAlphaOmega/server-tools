@@ -43,7 +43,7 @@ a server-wide module.
 This can be done with the ``server_wide_modules`` parameter in ``/etc/odoo.conf``
 or with the ``--load`` command-line parameter
 
-``server_wide_modules = "web, dbfilter_from_header"``
+``server_wide_modules = web,dbfilter_from_header``
 
 Configuration
 =============
@@ -54,6 +54,11 @@ applied before looking at the regular expression in the header.
 * For nginx, use:
 
   ``proxy_set_header X-Odoo-dbfilter [your filter regex];``
+  
+  ``Example: proxy_set_header X-Odoo-dbfilter ^DB_FILTER\Z``
+  
+  Make sure you _only_ replace the `DB_FILTER` section (leave the ^ and \Z portions)
+
 
 * For caddy, use:
 
